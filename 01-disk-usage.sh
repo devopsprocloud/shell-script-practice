@@ -5,7 +5,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-disk_usage=$(df -ht | grep 'xvd')
+disk_usage=$(df -hT | grep 'xvd')
 threshold=1
 message=""
 
