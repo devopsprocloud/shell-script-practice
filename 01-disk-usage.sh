@@ -15,9 +15,13 @@ do
     disk_partition=$(echo $line | awk {'print $1F'})
     if [ $current_usage -gt $threshold ]
     then            
-        message+="High Disk Usage on $disk_partition: $current_usage % \n"
+        message+="High Disk Usage on $disk_partition: $current_usage % <br>"
     fi
 done <<< $disk_usage
 
 echo -e "$message"
+
+# sh mail.sh "TO_TEAM" "SUBJECT" "ALERT_TYPE" "BODY" "TO_ADDRESS"
+# we are passing the arguments to mail.sh commands
+sh mail.sh "DevOps Team" "Systems | High Disk Usage" "High Disk Usage" "$message" "premsagar.eri@devopsprocloud.in"
 
