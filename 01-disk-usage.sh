@@ -19,3 +19,5 @@ do
     fi
 done <<< $disk_usage
 
+echo "$message"
+
