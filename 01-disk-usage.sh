@@ -23,6 +23,6 @@ echo -e "$message"
 
 # sh mail.sh "TO_TEAM" "SUBJECT" "ALERT_TYPE" "BODY" "TO_ADDRESS"
 # we are passing the arguments to mail.sh commands
-#sh mail.sh "DevOps Team" "Systems | High Disk Usage" "High Disk Usage" "$message" "premsagar.eri@devopsprocloud.in"
+sh mail.sh "DevOps Team" "Systems | High Disk Usage" "High Disk Usage" "$message" "premsagar.eri@devopsprocloud.in"
 
-sh mail.sh "Backup and Storage Team" "SYSTEMS | High Storage Usage" "Storage Alert" "Find the below disk's <br> Disk 1: 95% <br> Disk 2: 96%" "premsagar.eri@devopsprocloud.in"
+#sh mail.sh "Backup and Storage Team" "SYSTEMS | High Storage Usage" "Storage Alert" "Find the below disk's <br> Disk 1: 95% <br> Disk 2: 96%" "premsagar.eri@devopsprocloud.in"
