@@ -16,5 +16,6 @@ do
     if [ $current_usage -gt $threshold ]
     then            
         message+="High Disk Usage on $disk_partition: $current_usage %"
+    fi
 done <<< $disk_usage
 
