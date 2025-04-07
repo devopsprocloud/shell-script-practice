@@ -8,7 +8,7 @@ USAGE (){
     echo "OPTIONS::"
     echo "  -n, please specify the name (mandotory)"
     echo "  -w, please specify the wishes (optional), Default value is: Good Morning"
-    echo "  -h, Display Help and Exit"
+    echo "  -h, display Help and exit"
 }
 
 while getopts ":n:w:h" opt; 
