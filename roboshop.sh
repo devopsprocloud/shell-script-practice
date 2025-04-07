@@ -27,7 +27,7 @@ do
         #echo "Instance ID: $INSTANCE_ID, Public IP: $PUBLIC_IP"
     done
 
-    echo "$i : Private IP: $PRIVATE_IP_ADDRESS"
+    echo "$i : Private IP: $PRIVATE_IP"
     echo "$i : Public IP: $PUBLIC_IP"
 
 done
