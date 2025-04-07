@@ -34,13 +34,13 @@ do
         #echo "Instance ID: $INSTANCE_ID, Public IP: $PUBLIC_IP"
     done
 
-    # echo "$i : Private IP: $PRIVATE_IP"
-    # echo "$i : Public IP: $PUBLIC_IP"
+    echo "$i : Private IP: $PRIVATE_IP"
+    echo "$i : Public IP: $PUBLIC_IP"
 
-    if [ "$i" != "web" ]; then
-    RECORD_VALUE=$PRIVATE_IP
+    if [ "$i" == "web" ]; then
+    RECORD_VALUE=$PUBLIC_IP
     else
-        RECORD_VALUE=$PUBLIC_IP
+        RECORD_VALUE=$PRIVATE_IP
     fi
 
     aws route53 change-resource-record-sets \
@@ -55,7 +55,7 @@ do
             ,"Type"             : "A"
             ,"TTL"              : 1
             ,"ResourceRecords"  : [{
-                "Value"         : "'$PRIVATE_IP'"
+                "Value"         : "'$RECORD_VALUE'"
             }]
         }
         }]
