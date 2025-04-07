@@ -24,6 +24,8 @@ done
 if [ -z $NAME ] || [ -z $WISHES ]
 then
     echo "Both options -n and -w is mandatory"
+    USAGE
+    exit
 else
     echo "Hello $NAME. $WISHES."
 fi
