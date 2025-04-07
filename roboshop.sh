@@ -5,7 +5,7 @@ SG_ID=sg-04b7bd69af45641ab
 
 INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
 
-while i in "${INSTANCES[@]}"
+for i in "${INSTANCES[@]}"
 do
     if
         [ $i == "mongodb" ] || [ $I== "mysql" ] || [ $i == "shipping" ]
@@ -18,5 +18,4 @@ do
 done
 
 #Trying
-H
 
