@@ -18,10 +18,17 @@ do
     fi
     PRIVATE_IP_ADDRESS=$(aws ec2 run-instances --image-id $AMI_ID --instance-type $INSTANCE_TYPE --security-group-ids $SG_ID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" --query 'Instances[0].PrivateIpAddress' --output text)
 
-    PUBLIC_IP_ADDRESS=$(aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text)
+    # Run instances and capture instance IDs
+    INSTANCE_IDS=$(aws ec2 run-instances --image-id $AMI_ID --instance-type $INSTANCE_TYPE --security-group-ids $SG_ID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" --query 'Instances[*].InstanceId' --output text)
+
+    # Loop through each instance ID and retrieve its public IP address
+    for INSTANCE_ID in $INSTANCE_IDS; do
+        PUBLIC_IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query 'Reservations[*].Instances[*].PublicIpAddress' --output text)
+        echo "Instance ID: $INSTANCE_ID, Public IP: $PUBLIC_IP"
+    done
 
     echo "$i : $PRIVATE_IP_ADDRESS"
-    echo "$i : $PUBLIC_IP_ADDRESS"
+    #echo "$i : $PUBLIC_IP_ADDRESS"
 
 done
 #Doing 
