@@ -12,9 +12,9 @@ do
     then    
         INSTANCE_TYPE=t3.small
     else
-        INSTANCE_TYP=t2.micro
-        aws2 ec2 run-instances --image-id $AMI_ID --instance-type $INSTANCE_TYPE --security-group-ids $SG_ID --region us-east-1
+        INSTANCE_TYP=t2.micro  
     fi
+    aws2 ec2 run-instances --image-id $AMI_ID --instance-type $INSTANCE_TYPE --security-group-ids $SG_ID --region us-east-1
 done
 
 #Trying
