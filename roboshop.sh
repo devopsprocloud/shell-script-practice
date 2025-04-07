@@ -2,10 +2,11 @@
 
 AMI_ID=ami-09c813fb71547fc4f
 SG_ID=sg-04b7bd69af45641ab
+ZONE_ID=Z01399073MOD2DFZHUJNU
 
-#INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
+INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
 
-INSTANCES=("mongodb" "redis" "mysql" "web")
+#INSTANCES=("mongodb" "redis" "mysql" "web")
 
 for i in "${INSTANCES[@]}"
 do
@@ -30,7 +31,29 @@ do
     echo "$i : Private IP: $PRIVATE_IP"
     echo "$i : Public IP: $PUBLIC_IP"
 
+    if [ "$i" == "web" ]; then
+    RECORD_VALUE=$PUBLIC_IP
+    else
+        RECORD_VALUE=$PRIVATE_IP
+    fi
+
+    aws route53 change-resource-record-sets \
+    --hosted-zone-id $ZONE_ID \
+    --change-batch '
+    {
+        "Comment": "Creating a AWS Route 53 Record"
+        ,"Changes": [{
+        "Action"              : "UPSERT"
+        ,"ResourceRecordSet"  : {
+            "Name"              : "'$i'.devopsprocloud.in"
+            ,"Type"             : "A"
+            ,"TTL"              : 1
+            ,"ResourceRecords"  : [{
+                "Value"         : "'$RECORD_VALUE'"
+            }]
+        }
+        }]
+    }'
 done
-#Doing 
-#Trying
+
 
