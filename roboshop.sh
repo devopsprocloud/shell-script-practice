@@ -28,20 +28,20 @@ do
         #echo "Instance ID: $INSTANCE_ID, Public IP: $PUBLIC_IP"
     done
 
-    echo "$i : Private IP: $PRIVATE_IP"
-    echo "$i : Public IP: $PUBLIC_IP"
+    # echo "$i : Private IP: $PRIVATE_IP"
+    # echo "$i : Public IP: $PUBLIC_IP"
 
-    if [ "$i" == "web" ]; then
-    RECORD_VALUE=$PUBLIC_IP
+    if [ "$i" != "web" ]; then
+    RECORD_VALUE=$PRIVATE_IP
     else
-        RECORD_VALUE=$PRIVATE_IP
+        RECORD_VALUE=$PUBLIC_IP
     fi
 
     aws route53 change-resource-record-sets \
     --hosted-zone-id $ZONE_ID \
     --change-batch '
     {
-        "Comment": "Creating a AWS Route 53 Record"
+        "Comment": "Creating Route 53 Record"
         ,"Changes": [{
         "Action"              : "UPSERT"
         ,"ResourceRecordSet"  : {
