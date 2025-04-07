@@ -28,7 +28,7 @@ do
     done
 
     echo "$i : $PRIVATE_IP_ADDRESS"
-    #echo "$i : $PUBLIC_IP_ADDRESS"
+    echo "$i : $PUBLIC_IP"
 
 done
 #Doing 
