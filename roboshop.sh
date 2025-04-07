@@ -24,7 +24,6 @@ do
     echo "$i : $PUBLIC_IP_ADDRESS"
 
 done
-
-
+#Doing 
 #Trying
 
