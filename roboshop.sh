@@ -31,11 +31,11 @@ do
     # echo "$i : Private IP: $PRIVATE_IP"
     # echo "$i : Public IP: $PUBLIC_IP"
 
-    if [ "$i" != "web" ]; then
-    RECORD_VALUE=$PRIVATE_IP
-    else
-        RECORD_VALUE=$PUBLIC_IP
-    fi
+    # if [ "$i" != "web" ]; then
+    # RECORD_VALUE=$PRIVATE_IP
+    # else
+    #     RECORD_VALUE=$PUBLIC_IP
+    # fi
 
     aws route53 change-resource-record-sets \
     --hosted-zone-id $ZONE_ID \
@@ -49,7 +49,7 @@ do
             ,"Type"             : "A"
             ,"TTL"              : 1
             ,"ResourceRecords"  : [{
-                "Value"         : "'$RECORD_VALUE'"
+                "Value"         : "'$PRIVATE_IP'"
             }]
         }
         }]
