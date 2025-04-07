@@ -28,7 +28,7 @@ done
 #     USAGE
 #     exit
 # else
-#     echo "Hello $NAME. $WISHES."
+#     echo "Hello $NAME. $WISHES. I've been learning DevOps shell-script"
 # fi
 
 if [ -z $NAME ] 
@@ -37,6 +37,6 @@ then
     USAGE
     exit
 else
-    echo "Hello $NAME. $WISHES."
+    echo "Hello $NAME. $WISHES. I've been learning DevOps shell-script"
 fi
 
