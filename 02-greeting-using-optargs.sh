@@ -12,3 +12,5 @@ do
     esac
 done
 
+echo "Hello $NAME. $WISHES."
+
