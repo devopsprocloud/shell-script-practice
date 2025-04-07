@@ -1,13 +1,13 @@
 #!/bin/bash
 
 NAME=""
-WISHES=""
+WISHES="Good Morning"
 
 USAGE (){
-    echo "Command:: $(basename $0) -n <name> -w <wishes>"
-    echo "USAGE::"
-    echo "  -n, please specify the name"
-    echo "  -w, please specify the wishes. Ex: Good Morning"
+    echo "USAGE:: $(basename $0) -n <name> -w <wishes>"
+    echo "OPTIONS::"
+    echo "  -n, please specify the name (mandotory)"
+    echo "  -w, please specify the wishes (optional), defaults is: Good Morning"
     echo "  -h, Display Help and Exit"
 }
 
@@ -22,9 +22,18 @@ do
     esac
 done
 
-if [ -z $NAME ] || [ -z $WISHES ]
+# if [ -z $NAME ] || [ -z $WISHES ]
+# then
+#     echo "Both options -n and -w is mandatory"
+#     USAGE
+#     exit
+# else
+#     echo "Hello $NAME. $WISHES."
+# fi
+
+if [ -z $NAME ] 
 then
-    echo "Both options -n and -w is mandatory"
+    echo "Option -n is mandatory"
     USAGE
     exit
 else
