@@ -29,6 +29,8 @@ do
         \?) echo "Invalid option: -$OPTARG"; USAGE; exit;;
         *) echo "Invalid option: -$OPTARG"; USAGE; exit;;
     esac
+done
+
 
     if [ ! -d $source_dir ]
     then
@@ -58,6 +60,6 @@ do
         exit
     fi
 
-done
+
 
 
