@@ -52,7 +52,7 @@ then
     exit
 fi
 
-if [ "$archive" == "delete" ];
+if [ "$action" == "delete" ];
 then    
 echo "Deleting the files older than 14 days"
 USAGE
