@@ -1,12 +1,16 @@
 #!/bin/bash
 
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+B="\e[94m"
+N="\e[0m"
+
 AMI_ID=ami-09c813fb71547fc4f
 SG_ID=sg-04b7bd69af45641ab
 ZONE_ID=Z01399073MOD2DFZHUJNU
 
 INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
-
-#INSTANCES=("mongodb" "redis" "mysql" "web")
 
 for i in "${INSTANCES[@]}"
 do
@@ -25,17 +29,14 @@ do
     # Loop through each instance ID and retrieve its public IP address
     for INSTANCE_ID in $INSTANCE_IDS; do
         PUBLIC_IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query 'Reservations[*].Instances[*].PublicIpAddress' --output text)
-        #echo "Instance ID: $INSTANCE_ID, Public IP: $PUBLIC_IP"
     done
 
     # Loop through each instance ID and retrieve its public IP address
     for INSTANCE_ID in $INSTANCE_IDS; do
         PRIVATE_IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
-        #echo "Instance ID: $INSTANCE_ID, Public IP: $PUBLIC_IP"
     done
 
-    echo "$i : Private IP: $PRIVATE_IP"
-    echo "$i : Public IP: $PUBLIC_IP"
+    echo -e "$G $i$N: $B$PUBLIC_IP (Public IP)$N, $Y$PRIVATE_IP (private IP)$N"
 
     if [ "$i" == "web" ]; then
     RECORD_VALUE=$PUBLIC_IP
