@@ -55,7 +55,7 @@ then
 else 
     while IFS= read -r line
     do
-        find $source_dir -type f -name "*.log" | zip -@ "$destination_dir/$archive_name" "$FILES"
+        find $source_dir -type f -name "*.log" | zip -@ "$destination_dir/$archive_name"
         if [ $? == 0 ]
         then
             echo "archiving the file $line"
