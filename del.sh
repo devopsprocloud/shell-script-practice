@@ -49,7 +49,14 @@ if [ "$action" == "archive" ] && [ -z "$destination_dir" ];
 then    
     echo " -d <destination> is mandatory when -a <action> is archive"
     USAGE
-    exit
+    exit 
+fi
+
+if [ ! -d $destination_dir ];
+then
+    echo -e "Directory $destination_dir does not exist."
+    USAGE
+    exit 1
 fi
 
 if [ "$action" == "delete" ];
