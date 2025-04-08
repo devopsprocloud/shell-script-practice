@@ -61,6 +61,7 @@ else
             echo "archiving the file $line"
         else
             echo "archiving the $line is failed"
+            exit 1
         fi
     done <<< $FILES
 fi
