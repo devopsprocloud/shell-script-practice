@@ -54,7 +54,7 @@ then
 else 
     while IFS= read -r line
     do
-    tar -czf "$destination_dir/$line" -C "$source_dir"
+    #tar -czf "$destination_dir/$line" -C "$source_dir"
     echo "$line"
     done <<< $FILES
 fi
