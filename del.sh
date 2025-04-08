@@ -6,6 +6,7 @@ destination_dir=""
 time=14
 memory=""
 FILES=$(find $source_dir -type f -name "*.log")
+archive_name=archive.zip
 
 USAGE (){
     echo "OPTIONS: $(basename $0) -s <source-dir> -a <archive|delete> -d <destination> -t <day> -m <memory-in-mb>"
@@ -54,8 +55,12 @@ then
 else 
     while IFS= read -r line
     do
-    #tar -czf "$destination_dir/$line" -C "$source_dir"
-    echo "$line"
+    zip -r "$destination_dir/$archive_name" "$source_dir"
+    if [ $? == 0 ]
+    then
+        echo "archiving the file $line"
+    else
+        echo "archiving the $line is failed"
     done <<< $FILES
 fi
 
