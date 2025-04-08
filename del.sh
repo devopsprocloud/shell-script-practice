@@ -5,6 +5,7 @@ action=""
 destination_dir=""
 time=14
 memory=""
+FILES=$(find $source_dir -type f -name "*.log")
 
 USAGE (){
     echo "OPTIONS: $(basename $0) -s <source-dir> -a <archive|delete> -d <destination> -t <day> -m <memory-in-mb>"
@@ -49,7 +50,13 @@ if [ "$action" == "archive" ] && [ -z "$destination_dir" ];
 then    
     echo " -d <destination> is mandatory when -a <action> is archive"
     USAGE
-    exit 
+    exit
+else 
+    while IFS= read -r line
+    do
+    tar -czf "$destination_dir/$line" -C "$source_dir"
+    echo "$line"
+    done <<< $FILES
 fi
 
 if [ ! -d $destination_dir ];
