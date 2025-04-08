@@ -19,12 +19,12 @@ do
 
     for INSTANCE_ID in $$INSTANCE_IDS;
     do 
-    PUBLIC_IP=$(aws ec2 describe-instances --instance-ids <instance-id> --query "Reservations[*].Instances[*].PublicIpAddress" --output text)
+    PUBLIC_IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_IDS --query "Reservations[*].Instances[*].PublicIpAddress" --output text)
     done
 
     for INSTANCE_ID in $$INSTANCE_IDS;
     do 
-    PRIVATE_IP=$(aws ec2 describe-instances --instance-ids <instance-id> --query "Reservations[*].Instances[*].PrivateIpAddress" --output text)
+    PRIVATE_IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_IDS --query "Reservations[*].Instances[*].PrivateIpAddress" --output text)
     done
 
     echo "$i: $PUBLIC_IP (Public IP),  $PRIVATE_IP (private IP)"
