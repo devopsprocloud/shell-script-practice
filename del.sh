@@ -39,21 +39,21 @@ done
         exit 1
     fi
 
-    if [ -z = $source_dir ] || [ -z = $action ]
+    if [ -z = $source_dir ] || [ -z = "$action" ]
     then 
         echo " -s and -a options are mandotory"
         USAGE
         exit
     fi
 
-    if [ $action == "archive" ] && [ -z = $destination_dir ];
+    if [ "$action" == "archive" ] && [ -z = $destination_dir ];
     then    
         echo " -d <destination> is mandatory when -a <action> is archive"
         USAGE
         exit
     fi
 
-    if [ $archive == "delete" ];
+    if [ "$archive" == "delete" ];
     then    
     echo "Deleting the files older than 14 days"
     USAGE
