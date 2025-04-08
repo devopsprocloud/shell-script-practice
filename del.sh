@@ -54,7 +54,7 @@ fi
 
 if [ "$action" == "delete" ];
 then    
-echo "Deleting the files older than 14 days"
+echo "Deleting the files older than $time days"
 exit
 fi
 
