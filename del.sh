@@ -15,22 +15,21 @@ USAGE (){
     echo "  -t, please enter the number of days (optional). Default value is 14 days"
     echo "  -s, please enter the memory-in-mb (optional)"
     echo "  -h, display help and exit"
-
 }
+
 while getopts ":s:a:d:t:m:h" opt;
 do 
     case $opt in 
-        s) source_dir="$OPTARG";;
-        a) action="$OPTARG";;
-        d) destination_dir="$OPTARG";;
-        t) time="$OPTARG";;
-        m) memory="$OPTARG";;
-        h) USAGE; exit;;
-        \?) echo "Invalid option: -$OPTARG"; USAGE; exit;;
-        *) echo "Invalid option: -$OPTARG"; USAGE; exit;;
+    s) source_dir="$OPTARG";;
+    a) action="$OPTARG";;
+    d) destination_dir="$OPTARG";;
+    t) time="$OPTARG";;
+    m) memory="$OPTARG";;
+    h) USAGE; exit;;
+    \?) echo "Invalid option: -$OPTARG"; USAGE; exit;;
+    *) echo "Invalid option: -$OPTARG"; USAGE; exit;;
     esac
 done
-
 
     if [ ! -d $source_dir ]
     then
