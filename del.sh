@@ -31,33 +31,33 @@ do
     esac
 done
 
-    if [ ! -d $source_dir ]
-    then
-        echo -e "Directory $source_dir does not exist."
-        USAGE
-        exit 1
-    fi
-
-    if [ -z = $source_dir ] || [ -z = "$action" ]
-    then 
-        echo " -s and -a options are mandotory"
-        USAGE
-        exit
-    fi
-
-    if [ "$action" == "archive" ] && [ -z = $destination_dir ];
-    then    
-        echo " -d <destination> is mandatory when -a <action> is archive"
-        USAGE
-        exit
-    fi
-
-    if [ "$archive" == "delete" ];
-    then    
-    echo "Deleting the files older than 14 days"
+if [ ! -d $source_dir ];
+then
+    echo -e "Directory $source_dir does not exist."
     USAGE
-        exit
-    fi
+    exit 1
+fi
+
+if [ -z $source_dir ] || [ -z $action ]
+then 
+    echo " -s and -a options are mandotory"
+    USAGE
+    exit
+fi
+
+if [ $action == "archive" ] && [ -z $destination_dir ];
+then    
+    echo " -d <destination> is mandatory when -a <action> is archive"
+    USAGE
+    exit
+fi
+
+if [ "$archive" == "delete" ];
+then    
+echo "Deleting the files older than 14 days"
+USAGE
+    exit
+fi
 
 
 
