@@ -3,7 +3,7 @@
 source_dir=""
 action=""
 destination_dir=""
-time=""
+time=14
 memory=""
 
 USAGE (){
