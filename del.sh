@@ -55,12 +55,13 @@ then
 else 
     while IFS= read -r line
     do
-    zip -r "$destination_dir/$archive_name" "$source_dir"
-    if [ $? == 0 ]
-    then
-        echo "archiving the file $line"
-    else
-        echo "archiving the $line is failed"
+        zip -r "$destination_dir/$archive_name" "$source_dir"
+        if [ $? == 0 ]
+        then
+            echo "archiving the file $line"
+        else
+            echo "archiving the $line is failed"
+        fi
     done <<< $FILES
 fi
 
