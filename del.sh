@@ -55,7 +55,6 @@ fi
 if [ ! -d $destination_dir ];
 then
     echo -e "Directory $destination_dir does not exist."
-    USAGE
     exit 1
 fi
 
