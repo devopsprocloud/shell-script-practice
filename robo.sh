@@ -2,7 +2,7 @@
 
 AMI=ami-09c813fb71547fc4f
 SG=sg-04b7bd69af45641ab
-ZONE_ID=""
+ZONE_ID=Z01399073MOD2DFZHUJNU
 
 INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
 
