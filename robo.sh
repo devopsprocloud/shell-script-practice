@@ -45,8 +45,8 @@ do
         "Action"              : "UPSERT"
         ,"ResourceRecordSet"  : {
             "Name"              : "'$i'.devopsprocloud.in"
-            ,"Type"             : "CNAME"
-            ,"TTL"              : 120
+            ,"Type"             : "A"
+            ,"TTL"              : 1
             ,"ResourceRecords"  : [{
                 "Value"         : "'$RECORD_VALUE'"
             }]
