@@ -6,7 +6,7 @@ destination_dir=""
 time=14
 memory=""
 FILES=$(find $source_dir -type f -name "*.log")
-archive_name=archive.zip
+archive_name=archive2.zip
 
 USAGE (){
     echo "OPTIONS: $(basename $0) -s <source-dir> -a <archive|delete> -d <destination> -t <day> -m <memory-in-mb>"
@@ -55,7 +55,7 @@ then
 else 
     while IFS= read -r line
     do
-        zip -r "$destination_dir/$archive_name" "$source_dir"
+        zip -r "$destination_dir/$archive_name" "$FILES"
         if [ $? == 0 ]
         then
             echo "archiving the file $line"
