@@ -86,7 +86,7 @@ then
     while IFS= read -r line 
     do 
         echo "Deleting: $line"
-        #rm -rf $line
+        rm -rf $line
     done <<< $FILES_TO_DELETE
 else
     FILES_TO_ARCHIVE=$(find $source_dir -type f -mtime "+$time" -name "*.log")
@@ -94,7 +94,7 @@ else
     while IFS= read -r line 
     do 
         echo "ARCHIVING $line"
-        #zip -r "$destination_dir/archive.zip" $FILES_TO_ARCHIVE
+        zip -r "$destination_dir/archive.zip" $FILES_TO_ARCHIVE
     done <<< $FILES_TO_ARCHIVE
 fi
 
