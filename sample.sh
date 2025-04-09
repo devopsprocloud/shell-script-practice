@@ -86,12 +86,12 @@ then
 else
     FILES_TO_ARCHIVE=$(find $source_dir -type f -mtime $time -name "*.log")
     
-    if [ -z $FILES_TO_ARCHIVE ]
-    then    
-        echo "There are no files to archive"
-        exit 1
-    else
+    # if [ -z $FILES_TO_ARCHIVE ]
+    # then    
+    #     echo "There are no files to archive"
+    #     exit 1
+    # else
         echo -e "Archiving the file $line"
         zip -r "$destination_dir/archive.zip" $FILES_TO_ARCHIVE
-    fi
+    # fi
 fi
