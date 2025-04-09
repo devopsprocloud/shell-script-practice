@@ -86,3 +86,4 @@ if [ "$action" == "delete" ]; then
         echo "Deleting the file $line"
         rm -rf "$line"
     done <<< "$FILES_TO_DELETE"
+fi
