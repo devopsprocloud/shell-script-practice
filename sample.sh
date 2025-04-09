@@ -36,3 +36,26 @@ do
         \?) echo "ERROR: Invalid Option: -$OPTARG"; USAGE; exit;
     esac
 done
+
+#-------------------------------------------------------------------
+
+if [ ! -d $source_dir ];
+then
+    echo "ERROR: source $source_dir does not exist"
+fi 
+
+#-------------------------------------------------------------------
+
+if [ -z "$source_dir" ] && [ -z "$action" ];
+then    
+    echo "ERROR: -d, and -a, options are mandotory"
+    USAGE
+    exit
+fi 
+
+#--------------------------------------------------------------------
+
+if [ $action == "archive" ] && [ -z "$destination_dir" ] || [ ! -d $destination_dir ];
+then 
+    echo "ERROR:: -d, is mandotory when -a, is archive"
+fi
