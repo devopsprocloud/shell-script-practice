@@ -17,6 +17,12 @@ USAGE (){
     echo "  -h, display this help and exit" 
 }
 
+if [ $# -eq 0 ]; 
+then
+    USAGE
+    exit
+fi
+
 while getopts ":s:a:d:t:m:h" opt;
 do 
     case $opt in
