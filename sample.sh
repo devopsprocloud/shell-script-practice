@@ -74,24 +74,15 @@ fi
 
 #-----------------------------------------------------------------------------
 
-if  [ "$action" == "delete" ]
-then
+if [ "$action" == "delete" ]; then
     FILES_TO_DELETE=$(find "$source_dir" -type f -mtime "$time" -name "*.log")
 
-    while IFS= read -r line 
-    do 
-        echo "Deleting the file $line"
-        rm -rf $line
-    done <<< $FILES_TO_DELETE
-else
-    FILES_TO_ARCHIVE=$(find $source_dir -type f -mtime $time -name "*.log")
+    if [ -z "$FILES_TO_DELETE" ]; then
+        echo "No files to delete."
+        exit 0
+    fi
     
-    # if [ -z $FILES_TO_ARCHIVE ]
-    # then    
-    #     echo "There are no files to archive"
-    #     exit 1
-    # else
-        echo -e "Archiving the file $line"
-        zip -r "$destination_dir/archive.zip" $FILES_TO_ARCHIVE
-    # fi
-fi
+    while IFS= read -r line; do
+        echo "Deleting the file $line"
+        rm -rf "$line"
+    done <<< "$FILES_TO_DELETE"
