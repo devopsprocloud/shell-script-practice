@@ -89,6 +89,7 @@ else
     if [ -z $FILES_TO_ARCHIVE ]
     then    
         echo "There are no files to archive"
+        exit 1
     fi
 
     while IFS= read -r line 
