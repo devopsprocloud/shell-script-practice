@@ -3,7 +3,7 @@
 source_dir=""
 action=""
 destination_dir=""
-time=14
+time="14"
 memory=""
 
 USAGE (){
@@ -33,7 +33,7 @@ do
         t) time="$OPTARG";;
         m) memory="$OPTARG";;
         h) USAGE; exit;;
-        \?) echo "ERROR: Invalid Option: -$OPTARG"; USAGE; exit;
+        \?) echo "ERROR: Invalid Option: -$OPTARG"; USAGE; exit;;
     esac
 done
 
@@ -44,8 +44,13 @@ then
     echo "ERROR: The source directory $source_dir does not exist. Please enter a valid directory directory"
     USAGE
     exit 1
-
 fi 
+
+if [ -z "$(ls -A "$source_dir")" ];  
+then
+    echo -e "$R The directory $source_dir is Empty $N."
+    exit 1
+fi
 
 #-------------------------------------------------------------------
 
@@ -72,11 +77,27 @@ then
     exit 1
 fi
 
-#-----------------------------------------------------------------------------
+#--------------------------------------------------------------------------------
 
-if [ "$action" == "delete" ]; 
+if [ $action == "delete" ];
 then
-    FILES_TO_DELETE=$(find "$source_dir" -type f -mtime "$time" -name "*.log")
-    rm -rf $FILES_TO_DELETE
+    FILES_TO_DELETE=$(find $source_dir -type f -mtime +14 -name "*.log")
 
+    while IFS= read -r line 
+    do 
+        echo "Deleting: $line"
+        rm -rf $line
+    done <<< $FILES_TO_DELETE
 fi
+
+# else
+#     FILES_TO_ARCHIVE=$(find $source_dir -type f -mtime +14 -name "*.log")
+
+#     while IFS= read -r line 
+#     do 
+#         echo -e "ARCHIVING $Y $line $N"
+#         zip -r "$destination_dir/archive.zip" $FILES_TO_ARCHIVE
+#     done <<< $FILES_TO_ARCHIVE
+# fi
+
+
