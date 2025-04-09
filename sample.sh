@@ -94,7 +94,7 @@ else
     while IFS= read -r line 
     do 
         echo "ARCHIVING $line"
-        zip -r "$destination_dir/archive.zip" $FILES_TO_ARCHIVE
+        zip -r "$destination_dir/archive.zip" $file
     done <<< $FILES_TO_ARCHIVE
 fi
 
