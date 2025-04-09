@@ -88,15 +88,14 @@ then
         echo "Deleting: $line"
         #rm -rf $line
     done <<< $FILES_TO_DELETE
-fi
-# else
-#     FILES_TO_ARCHIVE=$(find $source_dir -type f -mtime $time -name "*.log")
+else
+    FILES_TO_ARCHIVE=$(find $source_dir -type f -mtime "+$time" -name "*.log")
 
-#     while IFS= read -r line 
-#     do 
-#         echo "ARCHIVING $line"
-#         #zip -r "$destination_dir/archive.zip" $FILES_TO_ARCHIVE
-#     done <<< $FILES_TO_ARCHIVE
-# fi
+    while IFS= read -r line 
+    do 
+        echo "ARCHIVING $line"
+        #zip -r "$destination_dir/archive.zip" $FILES_TO_ARCHIVE
+    done <<< $FILES_TO_ARCHIVE
+fi
 
 
