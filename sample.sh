@@ -81,7 +81,7 @@ fi
 
 if [ "$action" == "delete" ];
 then
-    FILES_TO_DELETE=$(find $source_dir -type f -mtime "$time" -name "*.log")
+    FILES_TO_DELETE=$(find $source_dir -type f -mtime "+$time" -name "*.log")
 
     while IFS= read -r line 
     do 
