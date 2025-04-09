@@ -81,23 +81,23 @@ fi
 
 if [ $action == "delete" ];
 then
-    FILES_TO_DELETE=$(find $source_dir -type f -mtime +14 -name "*.log")
+    FILES_TO_DELETE=$(find $source_dir -type f -mtime $time -name "*.log")
 
     while IFS= read -r line 
     do 
         echo "Deleting: $line"
-        #rm -rf $line
+        rm -rf $line
     done <<< $FILES_TO_DELETE
 fi
 
-# else
-#     FILES_TO_ARCHIVE=$(find $source_dir -type f -mtime +14 -name "*.log")
+else
+    FILES_TO_ARCHIVE=$(find $source_dir -type f -mtime $time -name "*.log")
 
-#     while IFS= read -r line 
-#     do 
-#         echo -e "ARCHIVING $Y $line $N"
-#         zip -r "$destination_dir/archive.zip" $FILES_TO_ARCHIVE
-#     done <<< $FILES_TO_ARCHIVE
-# fi
+    while IFS= read -r line 
+    do 
+        echo -e "ARCHIVING $Y $line $N"
+        zip -r "$destination_dir/archive.zip" $FILES_TO_ARCHIVE
+    done <<< $FILES_TO_ARCHIVE
+fi
 
 
