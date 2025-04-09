@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source_dir=""
+source_dir=/tmp/old-logs
 action=""
 destination_dir=""
 time=14
