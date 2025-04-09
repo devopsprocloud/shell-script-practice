@@ -46,9 +46,9 @@ fi
 
 #-------------------------------------------------------------------
 
-if [ -z "$source_dir" ] && [ -z "$action" ];
+if [ -z "$source_dir" ] || [ -z "$action" ];
 then    
-    echo "ERROR: -d, and -a, options are mandotory"
+    echo "ERROR: -s, and -a, options are mandotory"
     USAGE
     exit
 fi 
