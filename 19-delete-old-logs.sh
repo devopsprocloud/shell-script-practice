@@ -5,7 +5,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-source_dir="/tmp/shellscript-logs"
+source_dir="/tmp/old-logs"
 
 if [ ! -d $source_dir ]
 then
