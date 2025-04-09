@@ -74,16 +74,9 @@ fi
 
 #-----------------------------------------------------------------------------
 
-if [ "$action" == "delete" ]; then
+if [ "$action" == "delete" ]; 
+then
     FILES_TO_DELETE=$(find "$source_dir" -type f -mtime "$time" -name "*.log")
+    rm -rf "$line"
 
-    if [ -z "$FILES_TO_DELETE" ]; then
-        echo "No files to delete."
-        exit 0
-    fi
-    
-    while IFS= read -r line; do
-        echo "Deleting the file $line"
-        rm -rf "$line"
-    done <<< "$FILES_TO_DELETE"
 fi
