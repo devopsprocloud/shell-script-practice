@@ -77,6 +77,6 @@ fi
 if [ "$action" == "delete" ]; 
 then
     FILES_TO_DELETE=$(find "$source_dir" -type f -mtime "$time" -name "*.log")
-    rm -rf "$line"
+    rm -rf $FILES_TO_DELETE
 
 fi
