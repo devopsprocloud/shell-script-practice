@@ -55,7 +55,7 @@ fi
 
 #--------------------------------------------------------------------
 
-if [ $action == "archive" ] && [ -z "$destination_dir" ] || [ ! -d $destination_dir ];
+if [ "$action" == "archive" ] && [ -z "$destination_dir" ] || [ ! -d $destination_dir ];
 then 
     echo "ERROR:: -d, is mandotory when -a, is archive"
 fi
