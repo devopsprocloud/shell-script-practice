@@ -19,7 +19,7 @@ USAGE (){
 
 if [ $# -eq 0 ]; 
 then
-    echo "Please provide the options, find the below usage"
+    echo "ERROR: Please provide the options, find the below usage"
     USAGE
     exit
 fi
