@@ -7,8 +7,8 @@ time=14
 memory=""
 
 USAGE (){
-    echo "USAGE: $(basename $0) -s  <source-dir> -a <action archive|delete> -d <destination-dir> -t <days> -m <memory-in-mb>"
-    echo "Options:"
+    echo "USAGE:: $(basename $0) -s <source-dir> -a <action archive|delete> -d <destination-dir> -t <days> -m <memory-in-mb>"
+    echo "Options::"
     echo "  -s, specify the source directory (mandotory)"
     echo "  -a, specify action: archive or delete (mandotory)"
     echo "  -d, specify the destination directory if -a is "archive". This is optional when -a is "delete""
@@ -19,6 +19,7 @@ USAGE (){
 
 if [ $# -eq 0 ]; 
 then
+    echo "Please provide the options, find the below usage"
     USAGE
     exit
 fi
@@ -31,7 +32,7 @@ do
         d) destination_dir="$OPTARG";;
         t) time="$OPTARG";;
         m) memory="$OPTARG";;
-        h) help="$OPTARG";;
-        \?) echo "ERROR: Invalid Option: -$OPTARG"; USAGE; exit
+        h) USAGE; exit;;
+        \?) echo "ERROR: Invalid Option: -$OPTARG"; USAGE; exit;
     esac
 done
