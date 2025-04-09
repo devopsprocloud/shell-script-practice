@@ -80,7 +80,7 @@ then
 
     while IFS= read -r line 
     do 
-        echo -e "Deleting the file $line"
+        echo "Deleting the file $line"
         rm -rf $line
     done <<< $FILES_TO_DELETE
 else
