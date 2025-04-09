@@ -69,7 +69,7 @@ fi
 if [ "$action" == "delete" ]; then
     FILES_TO_DELETE=$(find "$source_dir" -type f -mtime "$time" -name "*.log")
 
-    if [ -z "$FILES_TO_DELETE" ]; then
+    if [ ! -f "$FILES_TO_DELETE" ]; then
         echo "No files to delete."
         exit 0
     fi
