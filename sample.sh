@@ -88,7 +88,6 @@ then
         echo "Deleting: $line"
         rm -rf $line
     done <<< $FILES_TO_DELETE
-fi
 
 else
     FILES_TO_ARCHIVE=$(find $source_dir -type f -mtime $time -name "*.log")
