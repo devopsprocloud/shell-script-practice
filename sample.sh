@@ -90,11 +90,8 @@ else
     then    
         echo "There are no files to archive"
         exit 1
-    fi
-
-    while IFS= read -r line 
-    do 
+    else
         echo -e "Archiving the file $line"
         zip -r "$destination_dir/archive.zip" $FILES_TO_ARCHIVE
-    done <<< $FILES_TO_ARCHIVE
+    fi
 fi
