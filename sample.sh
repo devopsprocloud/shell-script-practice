@@ -41,7 +41,10 @@ done
 
 if [ ! -d $source_dir ];
 then
-    echo "ERROR: source $source_dir does not exist"
+    echo "ERROR: The source directory $source_dir does not exist. Please enter a valid directory directory"
+    USAGE
+    exit 1
+
 fi 
 
 #-------------------------------------------------------------------
@@ -50,12 +53,47 @@ if [ -z "$source_dir" ] || [ -z "$action" ];
 then    
     echo "ERROR: -s, and -a, options are mandotory"
     USAGE
-    exit
+    exit 1
 fi 
 
 #--------------------------------------------------------------------
 
-if [ "$action" == "archive" ] && [ -z "$destination_dir" ] || [ ! -d $destination_dir ];
+if [ "$action" == "archive" ] && [ -z "$destination_dir" ] ;
 then 
     echo "ERROR:: -d, is mandotory when -a, is archive"
+    USAGE
+    exit 1
+fi
+
+if [ "$action" == "archive" ] && [ ! -d $destination_dir ]
+then
+    echo "ERROR:: The destination directory $destination_dir does not exist. Please enter a valid directory directory"
+    USAGE
+    exit 1
+fi
+
+#-----------------------------------------------------------------------------
+
+if  [ "$action" == "delete" ]
+then
+    FILES_TO_DELETE=$(find $source_dir -type f -mtime $time -name "*.log")
+
+    while IFS= read -r line 
+    do 
+        echo -e "Deleting the file $line"
+        rm -rf $line
+    done <<< $FILES_TO_DELETE
+else
+    FILES_TO_ARCHIVE=$(find $source_dir -type f -mtime $time -name "*.log")
+    
+    if [ -z $FILES_TO_ARCHIVE ]
+    then    
+        echo "There are no files to archive"
+    fi
+
+    while IFS= read -r line 
+    do 
+        echo -e "Archiving the file $line"
+        zip -r "$destination_dir/archive.zip" "$FILES_TO_ARCHIVE" 
+    done <<< $FILES_TO_ARCHIVE
 fi
